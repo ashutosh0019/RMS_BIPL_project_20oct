@@ -9,6 +9,7 @@ use App\Models\superadminAddAdmin;
 use App\Models\superadminEmployee;
 
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 
 class SuperAdminController extends Controller
@@ -27,9 +28,6 @@ class SuperAdminController extends Controller
     }
     function Admin(){
         return view('superAdmin.admin.add_admin');
-    }
-    function AdminList(){
-        return view('superAdmin.admin.list_admin');
     }
     function EmployeeList(){
         return view('superAdmin.employees.list_employee');
@@ -74,7 +72,7 @@ class SuperAdminController extends Controller
             //check password
             if(Hash::check($request->password, $userInfo->password)){
                 $request->session()->put('LoggedUser', $userInfo->id);
-                return redirect('superAdmin/index');
+                return redirect()->route('superAdmin.index');
 
             }else{
                 return back()->with('fail','Incorrect password');
@@ -85,13 +83,13 @@ class SuperAdminController extends Controller
     function logout(){
         if(session()->has('LoggedUser')){
             session()->pull('LoggedUser');
-            return redirect('/superAdmin/login');
+            return redirect()->route('superAdmin.login');
         }
     }
 
     function SuperAdminIndex(){
         $data = ['LoggedUserInfo'=>SuperAdmin::where('id','=', session('LoggedUser'))->first()];
-        return view('superAdmin.Index', $data);
+        return view('superAdmin.index', $data );
     }
     function index_signup(Request $request){
         $signup = new AdminProfile;
@@ -155,5 +153,14 @@ class SuperAdminController extends Controller
     
     }
     
+    function AdminList(){
+        // return view('superAdmin.admin.list_admin');
+        $adminListData = DB::table('superadmin_add_admins')->get();
+        // // $adminListData = superadminAddAdmin::all();                                         
+        
+
+        return view('superAdmin.admin.list_admin', ['superadmin_add_admins'=>$adminListData]);
+       
+    }
     
 }

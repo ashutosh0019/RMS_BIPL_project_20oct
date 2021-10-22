@@ -17,7 +17,7 @@ class AuthCheck
     public function handle(Request $request, Closure $next)
     {
         if(!session()->has('LoggedUser') && ($request->path() !='superAdmin/login' && $request->path() !='superAdmin/register' )){
-            return redirect('superAdmin/login')->with('fail','You must be logged in');
+            return redirect()->route('superAdmin.login')->with('fail','You must be logged in');
         }
 
         if(session()->has('LoggedUser') && ($request->path() == 'superAdmin/login' || $request->path() == 'superAdmin/register' ) ){

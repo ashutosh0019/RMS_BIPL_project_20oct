@@ -25,22 +25,22 @@
                                                 <th>Email</th>
                                                 <th>Mobile No.</th>
                                                 <th>Status</th>                                                
-                                                <th>Action</th>
+                                                <th>Edit</th>
+                                                <th>Delete</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>ashu</td>
-                                                <td>software engineer</td>
-                                                <td>patna</td>                                                
-                                                <td><span class="badge light badge-danger">In-Active</span></td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                                    </div>												
-                                                </td>
-                                            </tr>
+                                            @foreach($superadmin_add_admins as $superadmin_add_admin)
+                                                <tr>
+                                                    <td>{{$superadmin_add_admin->name}}</td>
+                                                    <td>{{$superadmin_add_admin->email}}</td>
+                                                    <td>{{$superadmin_add_admin->mobile}}</td>
+                                                    <td><span class='badge light badge-danger'>In-Active</span></td>
+                                                    <td><button type='submit' class='edit_client btn btn-success'>Edit</button></td>
+                                                    <td><button type='submit' class='delete_client btn btn-danger'>Delete</button></td>
+
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                         <tfoot>
                                             <tr>
@@ -48,7 +48,8 @@
                                                 <th>Email</th>
                                                 <th>Mobile No.</th>
                                                 <th>Status</th>                                                
-                                                <th>Action</th>
+                                                <th>Edit</th>
+                                                <th>Delete</th>
                                             </tr>
                                         </tfoot>
                                     </table>

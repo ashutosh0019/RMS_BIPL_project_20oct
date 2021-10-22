@@ -29,8 +29,8 @@ class UserAdminController extends Controller
         }else{
             //check password
             if(Hash::check($request->password, $userInfo->password)){
-                $request->session()->put('LoggedUser', $userInfo->id);
-                return redirect('userAdmin/index');
+                $request->session()->put('LoggedUserAdmin', $userInfo->id);
+                return redirect()->route('userAdmin.index');
 
             }else{
                 return back()->with('fail','Incorrect password');
@@ -39,14 +39,15 @@ class UserAdminController extends Controller
     }
 
     function logout(){
-        if(session()->has('LoggedUser')){
-            session()->pull('LoggedUser');
-            return redirect('/userAdmin/login');
+        if(session()->has('LoggedUserAdmin')){
+            session()->pull('LoggedUserAdmin');
+            return redirect()->route('userAdmin.login');
+
         }
     }
 
     function UserAdminIndex(){
-        $data = ['LoggedUserInfo'=>SuperAdmin::where('id','=', session('LoggedUser'))->first()];
+        $data = ['LoggedUserInfo'=>superadminAddAdmin::where('id','=', session('LoggedUserAdmin'))->first()];
         return view('userAdmin.Index', $data);
     }
 }

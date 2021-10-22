@@ -31,11 +31,12 @@
                                     <h4 class="text-center mb-4">Sign in your account</h4>
                                     <form action="{{route('userAdmin.check')}}" method="post">
                                         
+                                        
                                         @csrf
                                         <div class="mb-3">
                                             <label class="mb-1"><strong>User Id</strong></label>
                                             <input type="email" class="form-control" name="email" id="email" placeholder="hello@example.com">
-                                            <span class="text-danger">@error('user_Id'){{ $message }} @enderror</span>
+                                            <span class="text-danger">@error('email'){{ $message }} @enderror</span>
 
                                         </div>
                                         <div class="mb-3">
