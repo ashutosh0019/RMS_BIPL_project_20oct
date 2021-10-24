@@ -13,7 +13,7 @@ Route::post('/index/signup',[SuperAdminController::class, 'index_signup'])->name
 Route::post('/superAdmin/save',[SuperAdminController::class, 'save'])->name('superAdmin.save');
 Route::post('/superAdmin/check',[SuperAdminController::class, 'check'])->name('superAdmin.check');
 Route::get('/superAdmin/logout',[SuperAdminController::class, 'logout'])->name('superAdmin.logout');
-
+Route::get('/changeStatus', [SuperAdminController::class, 'ChangeUserStatus'])->name('changeStatus');
 
 
 Route::group(['middleware'=>['AuthCheck']], function(){

@@ -113,7 +113,7 @@ class SuperAdminController extends Controller
         //     'email'=>'required|email|unique:super_admins',
         //     'mobile'=>'required|min:10|max:10',
         //     'password'=>'required|min:5|max:12',
-        // ]);
+        // ]);  
     
 
         $signup = new superadminAddAdmin;
@@ -161,6 +161,14 @@ class SuperAdminController extends Controller
 
         return view('superAdmin.admin.list_admin', ['superadmin_add_admins'=>$adminListData]);
        
+    }
+
+    function ChangeUserStatus(Request $request){
+        $user = superadminAddAdmin::find($request->id);
+        $user->status = $request->status;
+        $user->save();
+  
+        // return response()->json(['success'=>'User status change successfully.']);
     }
     
 }
