@@ -15,6 +15,15 @@ Route::post('/superAdmin/check',[SuperAdminController::class, 'check'])->name('s
 Route::get('/superAdmin/logout',[SuperAdminController::class, 'logout'])->name('superAdmin.logout');
 Route::get('/changeStatus', [SuperAdminController::class, 'ChangeUserStatus'])->name('changeStatus');
 
+Route::get('/superAdmin/admin/index', [SuperAdminController::class, 'UserAdmin'])->name('superAdmin.admin.index');
+Route::post('/superAdmin/admin/index', [SuperAdminController::class, 'AddUserAdmin'])->name('superAdmin.admin.index');
+
+Route::get('/superAdmin/employees/index', [SuperAdminController::class, 'AdminEmployee'])->name('superAdmin.employees.index');
+Route::get('/superAdminEmpList', [SuperAdminController::class, 'AdminEmployeeList'])->name('superAdmin.employees.list');
+
+Route::post('/superAdmin/employees/index', [SuperAdminController::class, 'AddAdminEmployee'])->name('superAdmin.employees.index');
+// Route::get('/superAdmin/employees/index',[SuperAdminController::class, 'EmployeeList']);
+
 
 Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/superAdmin/login',[SuperAdminController::class, 'superAdminlogin'])->name('superAdmin.login');
@@ -45,3 +54,5 @@ Route::group(['middleware'=>['UserAdminAuthCheck']], function(){
 
 
 });
+
+

@@ -32,6 +32,9 @@ class SuperAdminController extends Controller
     function EmployeeList(){
         return view('superAdmin.employees.list_employee');
     }
+    function AdminEmployee(){
+        return view('superAdmin.employees.index');
+    }
     function save(Request $request){
         
         //Validate requests
@@ -105,6 +108,35 @@ class SuperAdminController extends Controller
         }
     
     }
+    function AddAdminEmployee(Request $request){
+        $signup = new superadminEmployee;
+        $signup->name    = $request->name;
+        $signup->email   = $request->email;
+        $signup->mobile   = $request->mobile;
+        $signup->password = $request->password;
+        $signup->save();
+        if(!$signup){
+            return response()->json(['code'=>0,'msg'=>'Something went wrong']);
+        }else{
+            return response()->json(['code'=>1,'msg'=>'New User has been successfully saved']);
+        }
+    
+    }
+    function AddUserAdmin(Request $request){
+        $signup = new superadminAddAdmin;
+        $signup->name    = $request->name;
+        $signup->email   = $request->email;
+        $signup->mobile   = $request->mobile;
+        $signup->password = $request->password;
+        $signup->save();
+        if(!$signup){
+            return response()->json(['code'=>0,'msg'=>'Something went wrong']);
+        }else{
+            return response()->json(['code'=>1,'msg'=>'New User has been successfully saved']);
+        }
+    
+    }
+    
     function SuperAdminAddNewAdmin(Request $request){
 
         //Validate requests
@@ -170,5 +202,33 @@ class SuperAdminController extends Controller
   
         // return response()->json(['success'=>'User status change successfully.']);
     }
+
+    function UserAdmin(){
+        $adminListData = DB::table('superadmin_add_admins')->get();
+        // // $adminListData = superadminAddAdmin::all();                                         
+        
+
+        return view('superAdmin.admin.index', ['superadmin_add_admins'=>$adminListData]);
+       
+        // return view('superAdmin.admin.index');
+    }
+
+    function AdminEmployeeList(){
+        $superadmin_employee = superadminEmployee::get();
+        // return response()->json($superadmin_employee);
+        return json_encode(array('data'=>$superadmin_employee));
+        // $employeeListData = DB::table('superadmin_employees')->get();
+        // $superadmin_employees = superadminEmployee::all();     
+       
+        // return view('superAdmin.employees.index', ['superadmin_employees'=>$superadmin_employees]);
+        // return view('superAdmin.employees.index');
+        // return response()->json([
+        //     'superadmin_employees'=>$employeeListData,
+        // ]);
+    }
+
+
+    
+    
     
 }
