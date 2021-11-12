@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\UserAdminController;
+use App\Http\Controllers\UserAdminEmployeeController;
+
+
 
 Route::get('/',[SuperAdminController::class, 'index'])->name('index');
 
@@ -45,6 +48,9 @@ Route::group(['middleware'=>['AuthCheck']], function(){
 Route::post('/userAdmin/check',[UserAdminController::class, 'check'])->name('userAdmin.check');
 Route::get('/userAdmin/logout',[UserAdminController::class, 'logout'])->name('userAdmin.logout');
 Route::post('/userAdmin/save',[UserAdminController::class, 'save'])->name('userAdmin.save');
+Route::get('/forgot_password',[UserAdminController::class, 'ForgotPassword'])->name('forgot_password');
+Route::get('/reset_password',[UserAdminController::class, 'ResetPassword'])->name('reset_password');
+
 
 Route::group(['middleware'=>['UserAdminAuthCheck']], function(){
 
@@ -54,5 +60,11 @@ Route::group(['middleware'=>['UserAdminAuthCheck']], function(){
 
 
 });
+
+//user admin employee route
+Route::get('/userAdmin/employee/index',[UserAdminEmployeeController::class, 'employeeIndex'])->name('userAdmin.employee.index');
+Route::get('/userAdmin/employee/vendor',[UserAdminEmployeeController::class, 'employeeVendor'])->name('userAdmin.employee.vendor');
+Route::get('/userAdmin/employee/kitchen',[UserAdminEmployeeController::class, 'employeeKitchen'])->name('userAdmin.employee.kitchen');
+Route::get('/userAdmin/employee/product',[UserAdminEmployeeController::class, 'employeeProduct'])->name('userAdmin.employee.product');
 
 

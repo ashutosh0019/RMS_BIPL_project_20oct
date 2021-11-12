@@ -14,6 +14,13 @@ class UserAdminController extends Controller
     function UserAdminlogin(){
         return view('userAdmin.login');
     } 
+    function ForgotPassword(){
+        return view('forgot_password');
+    }
+    
+    function ResetPassword(){
+        return view('reset_password');
+    }
 
     function check(Request $request){
         //Validate requests 
