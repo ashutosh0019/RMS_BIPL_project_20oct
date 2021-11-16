@@ -6,15 +6,11 @@
         <div class="deznav">
             <div class="deznav-scroll">
 				<ul class="metismenu" id="menu">
-                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <li><a class="has-arrow ai-icon" href="{{('/userAdmin/employee/index')}}" aria-expanded="false">
 							<i class="flaticon-025-dashboard"></i>
 							<span class="nav-text">Dashboard</span>
 						</a>
-                        <ul aria-expanded="false">
-							<li><a href="#">Dashboard Light</a></li>
-							<li><a href="#">Dashboard Dark</a></li>
-							
-						</ul>
+                       
 
                     </li>
 					<li><a class="has-arrow ai-icon" href="{{('/userAdmin/employee/kitchen')}}" aria-expanded="false">
@@ -29,11 +25,25 @@
 						</a>                       
 
                     </li>
+					<!--  -->
 					<li><a class="has-arrow ai-icon" href="{{('/userAdmin/employee/product')}}" aria-expanded="false">
 							<i class="flaticon-050-info"></i>
 							<span class="nav-text">Product</span>
 						</a>
+						
                        
+                    </li>
+					<!-- {{('/userAdmin/employee/order')}} -->
+					<li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+							<i class="flaticon-050-info"></i>
+							<span class="nav-text">Order</span>
+						</a>
+						<ul aria-expanded="false">                           
+							<li><a href="#">Order</a></li>
+							<li><a href="#">Checkout</a></li>
+							<li><a href="#">Invoice</a></li>
+							<li><a href="#">Customers</a></li>
+                        </ul>
                     </li>
 					
                     <!-- <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">

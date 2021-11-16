@@ -17,5 +17,8 @@ class UserAdminEmployeeController extends Controller
     }    
     function employeeProduct(){
         return view('userAdmin.employee.product');
+    }    
+    function employeeOrder(){
+        return view('userAdmin.employee.order');
     }
 }

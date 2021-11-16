@@ -61,10 +61,12 @@ Route::group(['middleware'=>['UserAdminAuthCheck']], function(){
 
 });
 
+
+
 //user admin employee route
 Route::get('/userAdmin/employee/index',[UserAdminEmployeeController::class, 'employeeIndex'])->name('userAdmin.employee.index');
 Route::get('/userAdmin/employee/vendor',[UserAdminEmployeeController::class, 'employeeVendor'])->name('userAdmin.employee.vendor');
 Route::get('/userAdmin/employee/kitchen',[UserAdminEmployeeController::class, 'employeeKitchen'])->name('userAdmin.employee.kitchen');
 Route::get('/userAdmin/employee/product',[UserAdminEmployeeController::class, 'employeeProduct'])->name('userAdmin.employee.product');
-
+Route::get('/userAdmin/employee/order',[UserAdminEmployeeController::class, 'employeeOrder'])->name('userAdmin.employee.order');
 
