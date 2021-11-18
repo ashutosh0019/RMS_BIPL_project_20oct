@@ -191,13 +191,17 @@
 						<div class="form-row">
 							
 							<div class="row">
-								<div class="mb-3 col-md-8">
+								<div class="mb-3 col-md-6">
 									<label class="form-label">Product Name</label>
 									<input type="text" class="form-control" placeholder="Product Name">
 								</div>
-								<div class="mb-4 col-md-4">
+								<div class="mb-4 col-md-3">
 									<label class="form-label">Product Price </label>
 									<input type="text" class="form-control" placeholder="Product Price">
+								</div>
+								<div class="mb-4 col-md-3">
+									<label class="form-label">Product Image </label>
+									<input type="file" class="form-control" placeholder="Product Image">
 								</div>
 								
 								<div class="table-responsive-sm">

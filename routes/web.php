@@ -70,3 +70,4 @@ Route::get('/userAdmin/employee/kitchen',[UserAdminEmployeeController::class, 'e
 Route::get('/userAdmin/employee/product',[UserAdminEmployeeController::class, 'employeeProduct'])->name('userAdmin.employee.product');
 Route::get('/userAdmin/employee/order',[UserAdminEmployeeController::class, 'employeeOrder'])->name('userAdmin.employee.order');
 
+Route::get('/userAdmin/employee',[UserAdminController::class, 'userAdminEmployee'])->name('userAdmin.employee');

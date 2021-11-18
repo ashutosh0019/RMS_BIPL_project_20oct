@@ -21,7 +21,10 @@ class UserAdminController extends Controller
     function ResetPassword(){
         return view('reset_password');
     }
-
+    
+    function userAdminEmployee(){
+        return view('userAdmin.employee');
+    }
     function check(Request $request){
         //Validate requests 
         $request->validate([
