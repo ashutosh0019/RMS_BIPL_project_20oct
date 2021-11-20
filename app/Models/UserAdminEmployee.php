@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SuperAdmin extends Model
+class UserAdminEmployee extends Model
 {
     use HasFactory;
-    protected $visible = ['user_Id', 'password', ];
+    protected $visible = ['name','email','mobile','password','kitchen','order','product','vendor'];
+
 }

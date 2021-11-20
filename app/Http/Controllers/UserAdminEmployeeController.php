@@ -21,4 +21,8 @@ class UserAdminEmployeeController extends Controller
     function employeeOrder(){
         return view('userAdmin.employee.order');
     }
+    function employeeLogin(){
+        return view('userAdmin.employee.login');
+    }
+    
 }

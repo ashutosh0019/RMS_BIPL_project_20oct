@@ -40,12 +40,7 @@
                                         </div>
                                         @endif
                                         @csrf
-                                        <div class="mb-3">
-                                            <label class="mb-1"><strong>Username</strong></label>
-                                            <input type="text" class="form-control" name="username" placeholder="username">
-                                            <span class="text-danger">@error('username'){{ $message }} @enderror</span>
-
-                                        </div>
+                                        
                                         <div class="mb-3">
                                             <label class="mb-1"><strong>User Id</strong></label>
                                             <input type="email" class="form-control" name="user_Id" placeholder="hello@example.com">

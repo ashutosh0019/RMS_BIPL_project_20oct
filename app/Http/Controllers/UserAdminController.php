@@ -6,6 +6,8 @@ use App\Models\SuperAdmin;
 use App\Models\AdminProfile;
 use App\Models\superadminAddAdmin;
 use App\Models\superadminEmployee;
+use App\Models\UserAdminEmployee;
+
 
 use Illuminate\Support\Facades\Hash;
 
@@ -59,5 +61,62 @@ class UserAdminController extends Controller
     function UserAdminIndex(){
         $data = ['LoggedUserInfo'=>superadminAddAdmin::where('id','=', session('LoggedUserAdmin'))->first()];
         return view('userAdmin.Index', $data);
+    }
+    function userAdminAddEmployee(Request $request){
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required|email|unique:users,email',
+            'mobile'=>'required|min:10|max:10',
+            'password'=>'required|min:5|max:30',
+
+        ]);
+        
+        $kitchen[] = $request->kitchen; 
+        $newKitchen = [];
+        foreach($kitchen as $key=>$kitchen){
+            $newKitchen[$key] = implode(',',$kitchen);
+        }
+
+        $order[] = $request->order;
+        $newOrder=[];
+        foreach($order as $odr=>$order){
+            $newOrder[$odr] = implode(',',$order);
+        } 
+
+        $product[] = $request->product;
+        $newProduct=[];
+        foreach($product as $pro=>$product){
+            $newProduct[$pro] = implode(',',$product);
+        }
+
+        $vendor[] = $request->vendor;
+        $newVendor=[];
+        foreach($vendor as $vndr=>$vendor){
+            $newVendor[$vndr] = implode(',',$vendor);
+        }       
+        // dd($newKitchen[0]);
+
+        
+        $user = new UserAdminEmployee();
+        $user->name= $request->name;
+        $user->email= $request->email;
+        $user->mobile= $request->mobile;
+        $user->password= \Hash::make($request->password);
+
+        $user->kitchen= $newKitchen[0];
+        $user->order= $newOrder[0];
+        $user->product= $newProduct[0];
+        $user->vendor= $newVendor[0]; 
+                 
+        $save=$user->save();
+
+        if($save){
+            return redirect()->back()->with('success','You Will Registered Successfully');            
+        }
+        else{
+            return redirect()->back()->with('fail','Something Went Wrong, Failed To Register');            
+
+        }
+
     }
 }

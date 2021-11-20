@@ -11,6 +11,8 @@
 	
 	<!-- FAVICONS ICON -->
 	<link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
+	<link rel="stylesheet" href="/vendor/select2/css/select2.min.css">
+
 	<link rel="stylesheet" href="/vendor/chartist/css/chartist.min.css">
 	<link href="/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
 	<!-- Style css -->
@@ -138,15 +140,11 @@
 						</ul>
 
                     </li>
-					<li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+					<li><a class="has-arrow ai-icon" href="{{('/userAdmin/employee')}}" aria-expanded="false">
 							<i class="flaticon-050-info"></i>
 							<span class="nav-text">Employees</span>
 						</a>
-                        <ul aria-expanded="false">
-							<li><a href="#">Add Employee</a></li>
-							<li><a href="#">List Employee</a></li>
-								
-						</ul>
+                        
 
                     </li>
 					
@@ -180,15 +178,7 @@
                     </li> -->
                     
                 </ul>
-				<div class="plus-box">
-					<img src="/images/plus.png" alt="">
-					<h5 class="fs-18 font-w700">Add Menus</h5>
-					<p class="fs-14 font-w400">Manage your food <br>and beverages menus<i class="fas fa-arrow-right ms-3"></i></p>
-				</div>
-				<div class="copyright">
-					<p><strong>RMS SUPER ADMIN</strong> © 2021 All Rights Reserved</p>
-					<p class="fs-12">Made with<span class="heart"></span> By Ashutosh</p>
-				</div>
+				
 			</div>
         </div>
         <!--**********************************

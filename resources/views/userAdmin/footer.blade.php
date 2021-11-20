@@ -32,7 +32,9 @@
     <script src="/vendor/global/global.min.js"></script>
 	<script src="/vendor/chart.js/Chart.bundle.min.js"></script>
 	<script src="/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
-	
+    <script src="/vendor/select2/js/select2.full.min.js"></script>
+    <script src="/js/plugins-init/select2-init.js"></script>
+
 	
 	<!-- Apex Chart -->
 	<script src="/vendor/apexchart/apexchart.js"></script>

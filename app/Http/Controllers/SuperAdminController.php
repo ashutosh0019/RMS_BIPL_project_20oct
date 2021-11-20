@@ -39,7 +39,6 @@ class SuperAdminController extends Controller
         
         //Validate requests
         $request->validate([
-            'username'=>'required',
             'user_Id'=>'required|email|unique:super_admins',
             'password'=>'required|min:5|max:12'
         ]);
@@ -48,7 +47,6 @@ class SuperAdminController extends Controller
 
          //Insert data into database
          $superAdmin = new SuperAdmin;
-         $superAdmin->username = $request->username;
          $superAdmin->user_Id = $request->user_Id;
          $superAdmin->password = Hash::make($request->password);
          $save = $superAdmin->save();

@@ -1,5 +1,26 @@
 @include('mainHeader');
 @include('userAdmin.employee.header');
+
+
+@php
+// $store_user_id = Auth::guard('')->user()->store_id;
+$email = "alok@gm.com";
+$kitchen = DB::table('user_admin_employees')->select('kitchen')->where('email', $email)->first();
+$getData = explode(',' , $kitchen->kitchen);
+// print_r($getData);
+@endphp
+{{-- @foreach($getData as $d)
+	@if ($d == "C")
+	<h1>create</h1>	
+
+	@elseif ($d == "R")
+	<h1>Read</h1>
+	@elseif ($d == "U")
+	<h1>update</h1>
+	@elseif ($d == "D")
+	<h1>DELETE</h1>
+	@endif
+@endforeach --}}
 <!--**********************************
             Content body start
         ***********************************-->
@@ -8,7 +29,12 @@
 			<div class="mb-sm-4 d-flex flex-wrap align-items-center text-head">
 					<h2 class="mb-3 me-auto">Product List</h2>
 					<div class="d-flex align-items-center flex-wrap">
+					@foreach($getData as $d)
+						@if ($d == "C")
 						<button type="button" class="btn btn-primary btn-rounded me-3 mb-2" data-bs-toggle="modal" data-bs-target="#add_new_product"><i class="fas fa-user-friends me-2"></i>+ Add New Product</button>
+						@endif
+					@endforeach
+						{{-- <button type="button" class="btn btn-primary btn-rounded me-3 mb-2" data-bs-toggle="modal" data-bs-target="#add_new_product"><i class="fas fa-user-friends me-2"></i>+ Add New Product</button> --}}
 					</div>
 				</div>
                 <div class="row">
@@ -29,10 +55,15 @@
 												<span class="text-danger">Customization available</span>
 											</div>
 											<div>
-												<button type="button" class="btn btn-primary btn-rounded me-3 mb-2" data-bs-toggle="modal" data-bs-target="#edit_product">Edit</button>
-												<button type="button" class="btn btn-danger btn-rounded me-3 mb-2">Delete</button>
+												@foreach($getData as $d)
+													@if ($d == "U")
+													<button type="button" class="btn btn-primary btn-rounded me-3 mb-2" data-bs-toggle="modal" data-bs-target="#edit_product">Edit</button>
+													@elseif($d == "D")
+													<button type="button" class="btn btn-danger btn-rounded me-3 mb-2">Delete</button>
 
-
+													@endif
+												@endforeach
+												
 											</div>
 										</div>
 									</div>	
@@ -40,136 +71,7 @@
                             </div>
                         </div>
 					</div>
-					<div class="col-lg-12 col-xl-6">
-                        <div class="card">
-                            <div class="card-body">
-								<div class="menu-product d-flex">
-									<img src="/images/product/pizz2.jpg">
-									<div class="content-detail-wrap">	
-										<div>
-											<h4>Vegitarian Bite Pizza</h4>
-											<span>Cheese, Green Pepper, Tomato, Onions.</span>
-										</div>
-										<div class="mt-4 d-flex justify-content-between align-items-center">
-											<div>
-												<h5 class="mb-0"><span class="fs-14 me-2">start From</span>Rs 165.00</h5>
-												<span class="text-danger">Customization available</span>
-											</div>
-											<div>
-												<button type="button" class="btn btn-primary btn-rounded me-3 mb-2" data-bs-toggle="modal" data-bs-target="#edit_product">Edit</button>
-												<button type="button" class="btn btn-danger btn-rounded me-3 mb-2">Delete</button>
-
-											</div>
-										</div>
-									</div>	
-								</div>
-                            </div>
-                        </div>
-					</div>
-					<div class="col-lg-12 col-xl-6">
-                        <div class="card">
-                            <div class="card-body">
-								<div class="menu-product d-flex">
-									<img src="/images/product/pizz3.jpg">
-									<div class="content-detail-wrap">	
-										<div>
-											<h4>Mushroom Riot Pizza</h4>
-											<span>Cheese, Mushroom, Cheese, Garlic, Chili</span>
-										</div>
-										<div class="mt-4 d-flex justify-content-between align-items-center">
-											<div>
-												<h5 class="mb-0"><span class="fs-14 me-2">start From</span>$15.00</h5>
-												<span class="text-danger">Customization available</span>
-											</div>
-											<div>
-												<button type="button" class="btn btn-primary btn-rounded me-3 mb-2" data-bs-toggle="modal" data-bs-target="#edit_product">Edit</button>
-												<button type="button" class="btn btn-danger btn-rounded me-3 mb-2">Delete</button>
-
-											</div>
-										</div>
-									</div>	
-								</div>
-                            </div>
-                        </div>
-					</div>
-					<div class="col-lg-12 col-xl-6">
-                        <div class="card">
-                            <div class="card-body">
-								<div class="menu-product d-flex">
-									<img src="/images/product/pizza4.jpg">
-									<div class="content-detail-wrap">	
-										<div>
-											<h4>American Heat Pizza</h4>
-											<span>Cheese, green pepper, onion, baby corn, jalapeno</span>
-										</div>
-										<div class="mt-4 d-flex justify-content-between align-items-center">
-											<div>
-												<h5 class="mb-0"><span class="fs-14 me-2">start From</span>$15.00</h5>
-												<span class="text-danger">Customization available</span>
-											</div>
-											<div>
-											<button type="button" class="btn btn-primary btn-rounded me-3 mb-2" data-bs-toggle="modal" data-bs-target="#edit_product">Edit</button>
-												<button type="button" class="btn btn-danger btn-rounded me-3 mb-2">Delete</button>
-
-											</div>
-										</div>
-									</div>	
-								</div>
-                            </div>
-                        </div>
-					</div>
-					<div class="col-lg-12 col-xl-6">
-                        <div class="card">
-                            <div class="card-body">
-								<div class="menu-product d-flex">
-									<img src="/images/product/pizza5.jpg">
-									<div class="content-detail-wrap">	
-										<div>
-											<h4>Mexican Delight Pizza</h4>
-											<span>Cheese, chilly, sweet corn, tomato, olives</span>
-										</div>
-										<div class="mt-4 d-flex justify-content-between align-items-center">
-											<div>
-												<h5 class="mb-0"><span class="fs-14 me-2">start From</span>$15.00</h5>
-												<span class="text-danger">Customization available</span>
-											</div>
-											<div>
-												<button type="button" class="btn btn-primary btn-rounded me-3 mb-2" data-bs-toggle="modal" data-bs-target="#edit_product">Edit</button>
-												<button type="button" class="btn btn-danger btn-rounded me-3 mb-2">Delete</button>
-
-											</div>
-										</div>
-									</div>	
-								</div>
-                            </div>
-                        </div>
-					</div>
-					<div class="col-lg-12 col-xl-6">
-                        <div class="card">
-                            <div class="card-body">
-								<div class="menu-product d-flex">
-									<img src="/images/product/pizza6.png">
-									<div class="content-detail-wrap">	
-										<div>
-											<h4>Spicytreat Pizza</h4>
-											<span>Cheese, Green Pepper, Spicy Paneer, Olives, Jalapeno.</span>
-										</div>
-										<div class="mt-4 d-flex justify-content-between align-items-center">
-											<div>
-												<h5 class="mb-0"><span class="fs-14 me-2">start From</span>$15.00</h5>
-												<span class="text-danger">Customization available</span>
-											</div>
-											<div>
-												<button type="button" class="btn btn-primary btn-rounded me-3 mb-2" data-bs-toggle="modal" data-bs-target="#edit_product">Edit</button>
-												<button type="button" class="btn btn-danger btn-rounded me-3 mb-2">Delete</button>
-
-											</div>
-										</div>
-									</div>	
-								</div>
-                            </div>
-                        </div>
-					</div>
+					
 					<!-- review -->
 					
                 </div>

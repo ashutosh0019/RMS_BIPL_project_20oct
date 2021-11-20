@@ -57,6 +57,9 @@ Route::group(['middleware'=>['UserAdminAuthCheck']], function(){
     Route::get('/userAdmin/login',[UserAdminController::class, 'UserAdminlogin'])->name('userAdmin.login');
 
     Route::get('/userAdmin/index',[UserAdminController::class, 'UserAdminIndex'])->name('userAdmin.index');
+    Route::get('/userAdmin/employee',[UserAdminController::class, 'userAdminEmployee'])->name('userAdmin.employee');
+    Route::post('/userAdmin/employee',[UserAdminController::class, 'userAdminAddEmployee'])->name('userAdmin.employee');
+
 
 
 });
@@ -64,10 +67,11 @@ Route::group(['middleware'=>['UserAdminAuthCheck']], function(){
 
 
 //user admin employee route
+Route::get('/userAdmin/employee/login',[UserAdminEmployeeController::class, 'employeeLogin'])->name('userAdmin.employee.login');
+
 Route::get('/userAdmin/employee/index',[UserAdminEmployeeController::class, 'employeeIndex'])->name('userAdmin.employee.index');
 Route::get('/userAdmin/employee/vendor',[UserAdminEmployeeController::class, 'employeeVendor'])->name('userAdmin.employee.vendor');
 Route::get('/userAdmin/employee/kitchen',[UserAdminEmployeeController::class, 'employeeKitchen'])->name('userAdmin.employee.kitchen');
 Route::get('/userAdmin/employee/product',[UserAdminEmployeeController::class, 'employeeProduct'])->name('userAdmin.employee.product');
 Route::get('/userAdmin/employee/order',[UserAdminEmployeeController::class, 'employeeOrder'])->name('userAdmin.employee.order');
 
-Route::get('/userAdmin/employee',[UserAdminController::class, 'userAdminEmployee'])->name('userAdmin.employee');
